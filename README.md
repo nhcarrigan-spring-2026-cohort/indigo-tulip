@@ -69,7 +69,7 @@ To run a command for a specific package without leaving the root directory, use 
 ```terminal
 yarn workspace @it/<package-name> <command>
 ```
-Example; the following command will run:
+Example; the following command will run the frontend app on dev mode:
 ```terminal
 yarn workspace @it/client dev
 ```
