@@ -1,0 +1,17 @@
+{
+  "name": "indigo-tulip",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "setup": "node ./scripts/setup.js",
+    "dev": "turbo dev",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down"
+  },
+  "packageManager": "yarn@4.11.0",
+  "devDependencies": {
+    "turbo": "^2.8.1"
+  }
+}

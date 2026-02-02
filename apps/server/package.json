@@ -1,0 +1,30 @@
+{
+  "name": "@it/server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "generate": "yarn prisma generate",
+    "migrate": "yarn prisma migrate dev",
+    "dev": "yarn migrate && tsx --env-file=.env src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "7.0.0",
+    "@prisma/client": "7.0.0",
+    "cors": "^2.8.6",
+    "express": "5.1.0",
+    "helmet": "^8.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "5.0.5",
+    "@types/node": "22.18.12",
+    "@types/pg": "^8.15.6",
+    "dotenv": "^17.2.3",
+    "prisma": "7.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "5.8.2"
+  }
+}
