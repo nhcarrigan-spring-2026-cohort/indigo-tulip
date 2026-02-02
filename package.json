@@ -7,8 +7,8 @@
   "scripts": {
     "setup": "node ./scripts/setup.js",
     "dev": "turbo dev",
-    "db:up": "docker-compose up -d",
-    "db:down": "docker-compose down"
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down"
   },
   "packageManager": "yarn@4.11.0",
   "devDependencies": {

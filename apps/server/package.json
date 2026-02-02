@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "db:up": "docker-compose up -d",
-    "db:down": "docker-compose down",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
     "generate": "yarn prisma generate",
     "migrate": "yarn prisma migrate dev",
     "dev": "yarn migrate && tsx --env-file=.env src/index.ts"
