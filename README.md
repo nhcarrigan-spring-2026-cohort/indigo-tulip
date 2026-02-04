@@ -54,7 +54,7 @@ git clone https://github.com/nhcarrigan-spring-2026-cohort/indigo-tulip/
 cd indigo-tulip
 ```
 
-2. Install dependencies; If you don't have yarn installed, `run npm install -g yarn` first. Then run:
+2. Install dependencies; If this gives you an error go to the Yarn help section under.
 
 ```terminal
 yarn install
