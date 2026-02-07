@@ -7,6 +7,11 @@
     --primary:#560591;
     --secondary:#AAF0D1;
 }
+h1{
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
 body{
     background-color: var(--primary);
