@@ -620,6 +620,7 @@ __metadata:
     globals: "npm:^16.5.0"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
+    react-router-dom: "npm:^7.13.0"
     vite: "npm:^7.2.4"
   languageName: unknown
   linkType: soft
@@ -2602,7 +2603,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "indigo-tulip@workspace:."
   dependencies:
-    react-router-dom: "npm:^7.13.0"
     turbo: "npm:^2.8.1"
   languageName: unknown
   linkType: soft
