@@ -13,5 +13,8 @@
   "packageManager": "yarn@4.11.0",
   "devDependencies": {
     "turbo": "^2.8.1"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.13.0"
   }
 }
