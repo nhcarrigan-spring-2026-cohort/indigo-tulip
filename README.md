@@ -2,21 +2,23 @@
 
 Repository for Team Indigo Tulip - Spring 2026 Cohort
 
-# [Project Name]
+# Homework Help Forum
 
 ## Project Overview
 
-[Brief description of what the project does and why it exists]
+A Q&A platform where students can ask homework questions and get help from volunteers, tutors, or other students.
 
 ## Problem Statement
 
-[What problem does this solve? Who is it for?]
+Students often struggle to find timely, high-quality assistance with complex assignments, leading to academic stress and incomplete learning. Existing platforms are frequently cluttered, expensive, or lack a structured community where learners can collaborate effectively and verify the accuracy of the help they receive.
 
 ## Core Features (MVP)
 
-1. [Feature 1]
-2. [Feature 2]
-3. [Feature 3]
+1. Authentication (Register, Login, Logout)
+2. Questions (Create, Browse, View)
+3. Answers (Submit, View)
+4. Search
+
 
 ## Nice-to-Have Features
 
