@@ -43,7 +43,7 @@ try {
      const data = await response.json(); 
      
      if (!response.ok) { 
-        alert(data.error || "Login failed"); 
+        setError(data.error || "Login failed"); 
         return; 
     }
 
@@ -82,7 +82,7 @@ try {
         />
         {error && <p className="error-message">{error}</p>}
         <button type="submit">Login</button>
-<p className="sign-link">Don't have an account? <a href="#">Sign-in</a></p>
+<p className="sign-link">Don't have an account? <a href="#">Sign-up</a></p>
     </form>
     </div>
   )
