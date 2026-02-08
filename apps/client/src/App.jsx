@@ -1,9 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignUpPage from './pages/Sign-upPage';
+
 function App() {
 
   return (
-    <>
-      <h1>Indigo tulips!</h1>
-    </>
+    <BrowserRouter>
+    <Routes>
+    <Route path='/' element={<SignUpPage/>} />
+    </Routes>
+    </BrowserRouter>
   )
 }
 
