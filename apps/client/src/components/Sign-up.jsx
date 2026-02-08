@@ -40,7 +40,7 @@ export default function SignUp() {
     }
 
     try {
-      const response = await fetch("/api/signup", {
+      const response = await fetch("", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -121,6 +121,7 @@ export default function SignUp() {
 
         <button type="submit">Sign Up</button>
       </form>
+      <p>Already have an account? <a href="#">Login</a></p>
     </div>
   );
 }
