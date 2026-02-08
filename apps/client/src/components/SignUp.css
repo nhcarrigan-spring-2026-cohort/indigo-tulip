@@ -11,6 +11,11 @@ body{
     background-color: var(--primary);
 }
 
+.login-link{
+text-align: center;
+margin-top: 1rem;
+}
+
 /* Container */
 #signup-container {
   max-width: 400px;
