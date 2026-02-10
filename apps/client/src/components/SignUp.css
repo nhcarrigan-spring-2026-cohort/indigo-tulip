@@ -35,8 +35,9 @@ margin-top: 1rem;
   color: var(--primary);
 }
 
+
 /* Form inputs */
-#signup-container input {
+#signup-container input,.role-drop{
   width: 100%;
   padding: 12px;
   margin: 8px 0 16px;

@@ -90,13 +90,14 @@ export default function SignUp() {
           required
         />
 
-        <input
-          type="text"
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-          placeholder="Enter role"
-        />
+        <select name="role" value={formData.role}
+         onChange={handleChange}
+          className="role-drop"
+           required>
+          <option value="" disabled>Choose role</option>
+<option value="Student">Student</option>
+<option value="Tutor" >Tutor</option>
+        </select>
 
         <input
           type="password"
