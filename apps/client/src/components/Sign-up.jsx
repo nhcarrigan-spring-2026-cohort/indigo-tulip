@@ -13,9 +13,22 @@ export default function SignUp() {
   const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const updatedForm = { ...formData, [name]: value };
+    setFormData(updatedForm);
+
+    if(updatedForm.confirmPassword){
+  if(updatedForm.password === updatedForm.confirmPassword){
+setSuccess("Password match")
+setError('')
+  }else{
+    setError("Password don't match")
+    setSuccess('')
+  }
+    }else{
     setError("");
     setSuccess("");
+    }
   };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
