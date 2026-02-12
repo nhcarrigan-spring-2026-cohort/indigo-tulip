@@ -1,8 +1,10 @@
+import LoadingSpinner from "./components/LoadingSpinner"
+
 function App() {
 
   return (
     <>
-      <h1>Indigo tulips!</h1>
+      <LoadingSpinner/>
     </>
   )
 }
