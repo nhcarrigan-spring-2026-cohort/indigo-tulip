@@ -1,8 +1,10 @@
+import AskQuestion from "./components/QuestionForm"
+
 function App() {
 
   return (
     <>
-      <h1>Indigo tulips!</h1>
+      <AskQuestion/>
     </>
   )
 }
