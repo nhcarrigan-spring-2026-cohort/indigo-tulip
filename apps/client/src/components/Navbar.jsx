@@ -4,8 +4,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <span className="logo-text">Indigo Tulip</span>
-        <span className="logo-icon">🌷</span>
+        <span className="logo-text">Help Forum</span>
       </div>
       <ul className="navbar-links">
         <li>
@@ -19,6 +18,9 @@ function Navbar() {
         </li>
         <li>
           <a href="/signup">Sign Up</a>
+        </li>
+        <li>
+          <a href="/profile">Profile</a>
         </li>
       </ul>
     </nav>
