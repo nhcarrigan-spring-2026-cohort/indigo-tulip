@@ -1,0 +1,76 @@
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary:#560591;
+    --secondary:#AAF0D1;
+}
+h1{
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+body{
+    background-color: var(--primary);
+}
+.sign-link{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#login-container {
+ max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: var(--secondary);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  
+}
+
+#login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-container input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#login-container input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 15px rgba(0,123,255,0.5);
+}
+
+#login-container button {
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#login-container button:hover {
+  background: whitesmoke;
+  color: var(--primary);
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 15px;
+  margin: -10px 0 15px 0;
+  text-align: left;
+}
