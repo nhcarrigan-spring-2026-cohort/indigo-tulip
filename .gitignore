@@ -28,5 +28,4 @@ apps/*/src/generated
 
 # Environment files
 **/.env
-
 .yarn/install-state.gz
