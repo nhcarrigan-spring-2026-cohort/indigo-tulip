@@ -13,6 +13,10 @@ h1 {
   color: #333;
   margin-bottom: 20px;
 }
+h3{
+  color: #333;
+  text-align: center;
+}
 
 /* Question card */
 .question-card {
