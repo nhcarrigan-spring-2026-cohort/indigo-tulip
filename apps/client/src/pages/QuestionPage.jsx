@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import QuestionCard from '../components/QuestionCard'
 import './QuestionPage.css'
+import AskQuestion from "../components/QuestionForm";
 
 export default function QForum(){
+  const [showForm,setShowForm]=useState(false)
 /*
     const [questions,setQuestions]=useState([]);
 
@@ -82,6 +84,10 @@ text:'Maybe the backend will fix that hopefully'
      return (
         <>
         <div>
+           <button onClick={() => setShowForm(!showForm)}>
+        {showForm ? "Hide Ask Question" : "Ask a Question"}
+      </button>
+      {showForm && <AskQuestion/>}
       <h1>Q&A Forum</h1>
       {mockQuestions.map(q => (
         <QuestionCard key={q.id} question={q} />
