@@ -19,17 +19,6 @@ Students often struggle to find timely, high-quality assistance with complex ass
 3. Answers (Submit, View)
 4. Search
 
-
-## Nice-to-Have Features
-
-1. [Feature 1]
-2. [Feature 2]
-
-## Stretch Goals
-
-1. [Feature 1]
-2. [Feature 2]
-
 ## Technical Stack
 
 - Front-end: React (`v19`) + Vite (`v7`).
@@ -108,17 +97,3 @@ Example; the following command will run the frontend app on dev mode:
 yarn workspace @it/client dev
 ```
 
-## Timeline
-
-- Week 1-2: [Milestone]
-- Week 3-4: [Milestone]
-- Week 5-6: [Milestone]
-- Week 7-8: [Milestone]
-- Week 9-10: [Milestone]
-- Week 11-12: [Milestone]
-
-## Success Criteria
-
-- [ ] [Criterion 1]
-- [ ] [Criterion 2]
-- [ ] [Criterion 3]
