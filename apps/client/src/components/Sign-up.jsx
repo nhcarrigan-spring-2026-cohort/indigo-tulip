@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './SignUp.css'
+import "../styles/SignUp.css";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -7,7 +7,7 @@ export default function SignUp() {
     email: "",
     role: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -17,17 +17,17 @@ export default function SignUp() {
     const updatedForm = { ...formData, [name]: value };
     setFormData(updatedForm);
 
-    if(updatedForm.confirmPassword){
-  if(updatedForm.password === updatedForm.confirmPassword){
-setSuccess("Password match")
-setError('')
-  }else{
-    setError("Password don't match")
-    setSuccess('')
-  }
-    }else{
-    setError("");
-    setSuccess("");
+    if (updatedForm.confirmPassword) {
+      if (updatedForm.password === updatedForm.confirmPassword) {
+        setSuccess("Password match");
+        setError("");
+      } else {
+        setError("Password don't match");
+        setSuccess("");
+      }
+    } else {
+      setError("");
+      setSuccess("");
     }
   };
 
@@ -72,9 +72,8 @@ setError('')
         email: "",
         role: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
       });
-
     } catch (err) {
       console.error("Error:", err);
       setError("Server error, please try again.");
@@ -103,13 +102,18 @@ setError('')
           required
         />
 
-        <select name="role" value={formData.role}
-         onChange={handleChange}
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
           className="role-drop"
-           required>
-          <option value="" disabled>Choose role</option>
-<option value="Student">Student</option>
-<option value="Tutor" >Tutor</option>
+          required
+        >
+          <option value="" disabled>
+            Choose role
+          </option>
+          <option value="Student">Student</option>
+          <option value="Tutor">Tutor</option>
         </select>
 
         <input
@@ -135,7 +139,9 @@ setError('')
 
         <button type="submit">Sign Up</button>
       </form>
-      <p className="login-link">Already have an account? <a href="#">Login</a></p>
+      <p className="login-link">
+        Already have an account? <a href="#">Login</a>
+      </p>
     </div>
   );
 }
