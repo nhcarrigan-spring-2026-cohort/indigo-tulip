@@ -1,54 +1,51 @@
-import React, { useState } from 'react';
-import './questionForm.css'
+import React, { useState } from "react";
+import "../styles/questionForm.css";
 
 const AskQuestion = () => {
-  const [title, setTitle] = useState('');
-  const [subject, setSubject] = useState('');
-  const [body, setBody] = useState('');
-  const [error, setError] = useState('');
-  const [success,setSuccess]= useState('')
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !subject || !body) {
-      setError('Please fill in all fields.');
+      setError("Please fill in all fields.");
       return;
     }
     // API call
 
-    try{
+    try {
+      const response = await fetch("", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, subject, body }),
+      });
 
-        const response=await fetch('',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({title,subject,body})
-        });
+      if (!response.ok) {
+        throw new Error("Failed to submit question");
+      }
 
-        if(!response.ok){
-            throw new Error('Failed to submit question')
-        }
-
-        const data=await response.json()
-console.log({ title, subject, body });
-    setSuccess('Your question has been posted!')
-    setError('');
-    setTitle('');
-    setSubject('');
-    setBody('');
-
-    } catch (err){
-        setError(err.message)
+      const data = await response.json();
+      console.log({ title, subject, body });
+      setSuccess("Your question has been posted!");
+      setError("");
+      setTitle("");
+      setSubject("");
+      setBody("");
+    } catch (err) {
+      setError(err.message);
     }
-
   };
 
   return (
     <div className="ask-question-container">
       <h2>Ask a Question</h2>
       {error && <p className="error">{error}</p>}
-      {success && <p className='success'>{success}</p>}
+      {success && <p className="success">{success}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Question Title:

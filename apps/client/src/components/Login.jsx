@@ -1,90 +1,90 @@
-import React, {useState} from "react";
-import './login.css'
+import React, { useState } from "react";
+import "../styles/login.css";
 
-export default function LoginForm(){
+export default function LoginForm() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
-  const [formData, setFormData] = useState({email:"",password:""});
-  const [error, setError]=useState('');
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleChange = (e) => { 
-    setFormData({ ...formData, [e.target.name]: e.target.value }); };
+  // Regex patterns
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^.{6,}$/;
 
-// Regex patterns 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-const passwordRegex = /^.{6,}$/;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-
-  const handleSubmit= async(e)=>{
-e.preventDefault()
-
-if (!emailRegex.test(formData.email)) { 
-    setError("Please enter a valid email address."); 
-    return; 
-}
-
-if (!passwordRegex.test(formData.password)) { 
-    setError( "Password must be at least 6 characters" );
-     return; }
-
-if (!formData.email.trim() || !formData.password.trim()) {
-      setError('Please enter both email and password.');
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
       return;
     }
-console.log("loggin in")
-// CALL API
-// If validation passes, send to backend 
 
-try {
- const response = await fetch("", {
-     method: "POST",
-     headers: { "Content-Type": "application/json" }, 
-     body: JSON.stringify(formData), }); 
-     
-     const data = await response.json(); 
-     
-     if (!response.ok) { 
-        setError(data.error || "Login failed"); 
-        return; 
+    if (!passwordRegex.test(formData.password)) {
+      setError("Password must be at least 6 characters");
+      return;
     }
 
-    alert("Login successful!"); 
-    console.log("User logged in:", data);
-
-    setFormData({email:"",password:""})
-
- } catch (err) { 
-    console.error("Error:", err);
-     alert("Server error, please try again."); 
-    
+    if (!formData.email.trim() || !formData.password.trim()) {
+      setError("Please enter both email and password.");
+      return;
     }
-     
+    console.log("loggin in");
+    // CALL API
+    // If validation passes, send to backend
 
-  }
+    try {
+      const response = await fetch("", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Login failed");
+        return;
+      }
+
+      alert("Login successful!");
+      console.log("User logged in:", data);
+
+      setFormData({ email: "", password: "" });
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Server error, please try again.");
+    }
+  };
 
   return (
     <div id="login-container">
-        <h1>Login</h1>
-    <form onSubmit={handleSubmit} >
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Enter email"
+          name="email"
+          required
+        />
 
-    <input type="email"
-     value={formData.email}
-      onChange={handleChange}
-      placeholder="Enter email"
-      name="email"
-       required/>
-
-       <input type="password"
-        value={formData.password}
-        placeholder="Enter password"
-        onChange={handleChange}
-        name="password"
-        required
+        <input
+          type="password"
+          value={formData.password}
+          placeholder="Enter password"
+          onChange={handleChange}
+          name="password"
+          required
         />
         {error && <p className="error-message">{error}</p>}
         <button type="submit">Login</button>
-<p className="sign-link">Don't have an account? <a href="#">Sign-up</a></p>
-    </form>
+        <p className="sign-link">
+          Don't have an account? <a href="#">Sign-up</a>
+        </p>
+      </form>
     </div>
-  )
-
+  );
 }
