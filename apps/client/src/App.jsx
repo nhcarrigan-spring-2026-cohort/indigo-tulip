@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import SignUpPage from "./pages/Sign-upPage";
 import LoginPage from "./pages/LoginPage";
 import AskQuestion from "./components/QuestionForm"
+import QForum from "./pages/QuestionPage";
 
 function App() {
   return (
@@ -10,9 +11,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<SignUpPage />} />
+          <Route path="/" element={<QForum />} />
+        {/*  <Route path="/" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
-            <Route path='/' element={<AskQuestion/>}/>
+            <Route path='/' element={<AskQuestion/>}/>*/}
         </Routes>
       </BrowserRouter>
     </>
