@@ -12,18 +12,18 @@ Students often struggle to find timely, high-quality assistance with complex ass
 
 ## Core Features (MVP)
 
-1. Simple Q & A: Users post a question, helpers respond.
-2. Full CRUD: Make sure questions and responses are editable and deletable.
-3. Account Control: Support account control & deletion - this would delete their associated questions and comments - this is the cleanest path for the database
+1. **Simple Q & A:** Users post a question, helpers respond.
+2. **Full CRUD:** Make sure questions and responses are editable and deletable.
+3. **Account Control:** Support account control & deletion - this would delete their associated questions and comments - this is the cleanest path for the database
    
 ---
 
 ## Technical Stack
 
-- Front-end: React (`v19`) + Vite (`v7`).
-- Back-end: ExpressJS (`v5`) + Prisma (`v7`).
-- Database: PostgreSQL (`v18`).
-- Other: Yarn workspaces + Turbo for monorepo management.
+- **Front-end:** React (`v19`) + Vite (`v7`).
+- **Back-end:** ExpressJS (`v5`) + Prisma (`v7`).
+- **Database:** PostgreSQL (`v18`).
+- **Other:** Yarn workspaces + Turbo for monorepo management.
 
 ---
 
@@ -91,7 +91,13 @@ Check [here](https://gist.github.com/macx/21d444166d169f8eff09c0c2f3f0f523) for 
 
 ## Project Structure
 
-This repository is a **monorepo**. All core logic and features are housed within the `/apps` directory.
+This repository is a **monorepo**, structure is as follows:
+- `/apps`: Core logic and features
+- `/apps/client`: The React Frontend
+- `/apps/server`: The Express/Prisma API
+- `packages/config`: Shared ESLint and Prettier settings
+
+
 To run a command for a specific package without leaving the root directory, use the following syntax:
 
 ```terminal
