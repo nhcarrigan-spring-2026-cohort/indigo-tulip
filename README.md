@@ -1,8 +1,6 @@
-# indigo-tulip
+# indigo-tulip: Homework Help Forum
 
 Repository for Team Indigo Tulip - Spring 2026 Cohort
-
-# Homework Help Forum
 
 ## Project Overview
 
@@ -14,10 +12,12 @@ Students often struggle to find timely, high-quality assistance with complex ass
 
 ## Core Features (MVP)
 
-1. Authentication (Register, Login, Logout)
-2. Questions (Create, Browse, View)
-3. Answers (Submit, View)
-4. Search
+1. Authentication: Register, Login, and Account Deletion (with cascading data cleanup).
+2. Questions: A text-based form for students to post questions.
+3. Guided Responses: A two part response form that includes a text description and links to external learning materials.
+4. Full CRUD: Users can edit or delete their own questions, responses, and accounts. 
+   
+---
 
 ## Technical Stack
 
@@ -26,9 +26,11 @@ Students often struggle to find timely, high-quality assistance with complex ass
 - Database: PostgreSQL (`v18`).
 - Other: Yarn workspaces + Turbo for monorepo management.
 
+---
+
 ## How to run the projects and requirements.
 
-Requirements:
+### Requirements:
 Before you begin, ensure you have the following installed:
 
 Node.js: LTS version (`v20+`)
@@ -36,7 +38,9 @@ Node.js: LTS version (`v20+`)
 Database: PostgreSQL (`v18+`)
 Note: You can use the provided Docker setup or a local instance.
 
-Setup:
+---
+
+### Setup:
 
 1. Clone the repository:
 
@@ -69,6 +73,8 @@ yarn db:up
 yarn dev
 ```
 
+---
+
 ### Yarn Help
 
 If your Yarn command is throwing back an error, this may be because you're using the incorrect version. If it is version `1.22.22`, this is Yarn Classic, which is in maintenance mode. This project uses Yarn `4.11.0`. Follow these steps to remove and install the latest version of Yarn.
@@ -81,6 +87,8 @@ If your Yarn command is throwing back an error, this may be because you're using
    1. Should be version `4.11.0`
 
 Check [here](https://gist.github.com/macx/21d444166d169f8eff09c0c2f3f0f523) for further help.
+
+---
 
 ## Project Structure
 
@@ -97,3 +105,11 @@ Example; the following command will run the frontend app on dev mode:
 yarn workspace @it/client dev
 ```
 
+---
+
+## Team Workflow
+
+To keep the repo clean, please follow these etiquette rules:
+- Descriptive PRs: All Pull Requests must include a summary of changes and a UI screenshot.
+- Board Linking: Link all PRs to their respective GitHub Issue on the project board.
+- Main is Truth: All feature branches must merge into `main` after a peer review. 
