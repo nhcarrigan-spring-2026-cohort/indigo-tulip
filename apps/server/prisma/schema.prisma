@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output = "../src/generated"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -8,33 +8,8 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  role      String   @default("USER")
-  password  String
-  createdAt DateTime @default(now())
-  questions Question[] 
-  answers   Answer[]  
-}
-
-model Question {
-  id        String   @id @default(uuid())
-  title     String
-  subject   String
-  body      String
-  createdAt DateTime @default(now())
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
-  answers   Answer[]
-}
-
-model Answer {
-  id        String   @id @default(uuid())
-  body      String
-  createdAt DateTime @default(now())
-  question   Question @relation(fields: [questionId], references: [id])
-  questionId String
-  author     User     @relation(fields: [authorId], references: [id])
-  authorId   String
+  id       String  @id @default(dbgenerated("uuidv7()")) @db.Uuid
+  email    String  @unique
+  username String  @unique
+  name     String?
 }
