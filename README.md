@@ -12,10 +12,9 @@ Students often struggle to find timely, high-quality assistance with complex ass
 
 ## Core Features (MVP)
 
-1. Authentication: Register, Login, and Account Deletion (with cascading data cleanup).
-2. Questions: A text-based form for students to post questions.
-3. Guided Responses: A two part response form that includes a text description and links to external learning materials.
-4. Full CRUD: Users can edit or delete their own questions, responses, and accounts. 
+1. Simple Q & A: Users post a question, helpers respond.
+2. Full CRUD: Make sure questions and responses are editable and deletable.
+3. Account Control: Support account control & deletion - this would delete their associated questions and comments - this is the cleanest path for the database
    
 ---
 
