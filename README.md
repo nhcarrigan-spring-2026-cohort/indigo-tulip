@@ -1,8 +1,6 @@
-# indigo-tulip
+# indigo-tulip: Homework Help Forum
 
 Repository for Team Indigo Tulip - Spring 2026 Cohort
-
-# Homework Help Forum
 
 ## Project Overview
 
@@ -14,21 +12,24 @@ Students often struggle to find timely, high-quality assistance with complex ass
 
 ## Core Features (MVP)
 
-1. Authentication (Register, Login, Logout)
-2. Questions (Create, Browse, View)
-3. Answers (Submit, View)
-4. Search
+1. **Simple Q & A:** Users post a question, helpers respond.
+2. **Full CRUD:** Make sure questions and responses are editable and deletable.
+3. **Account Control:** Support account control & deletion - this would delete their associated questions and comments - this is the cleanest path for the database
+   
+---
 
 ## Technical Stack
 
-- Front-end: React (`v19`) + Vite (`v7`).
-- Back-end: ExpressJS (`v5`) + Prisma (`v7`).
-- Database: PostgreSQL (`v18`).
-- Other: Yarn workspaces + Turbo for monorepo management.
+- **Front-end:** React (`v19`) + Vite (`v7`).
+- **Back-end:** ExpressJS (`v5`) + Prisma (`v7`).
+- **Database:** PostgreSQL (`v18`).
+- **Other:** Yarn workspaces + Turbo for monorepo management.
+
+---
 
 ## How to run the projects and requirements.
 
-Requirements:
+### Requirements:
 Before you begin, ensure you have the following installed:
 
 Node.js: LTS version (`v20+`)
@@ -36,7 +37,9 @@ Node.js: LTS version (`v20+`)
 Database: PostgreSQL (`v18+`)
 Note: You can use the provided Docker setup or a local instance.
 
-Setup:
+---
+
+### Setup:
 
 1. Clone the repository:
 
@@ -69,6 +72,8 @@ yarn db:up
 yarn dev
 ```
 
+---
+
 ### Yarn Help
 
 If your Yarn command is throwing back an error, this may be because you're using the incorrect version. If it is version `1.22.22`, this is Yarn Classic, which is in maintenance mode. This project uses Yarn `4.11.0`. Follow these steps to remove and install the latest version of Yarn.
@@ -82,9 +87,17 @@ If your Yarn command is throwing back an error, this may be because you're using
 
 Check [here](https://gist.github.com/macx/21d444166d169f8eff09c0c2f3f0f523) for further help.
 
+---
+
 ## Project Structure
 
-This repository is a **monorepo**. All core logic and features are housed within the `/apps` directory.
+This repository is a **monorepo**, structure is as follows:
+- `/apps`: Core logic and features
+- `/apps/client`: The React Frontend
+- `/apps/server`: The Express/Prisma API
+- `packages/config`: Shared ESLint and Prettier settings
+
+
 To run a command for a specific package without leaving the root directory, use the following syntax:
 
 ```terminal
@@ -97,3 +110,11 @@ Example; the following command will run the frontend app on dev mode:
 yarn workspace @it/client dev
 ```
 
+---
+
+## Team Workflow
+
+To keep the repo clean, please follow these etiquette rules:
+- Descriptive PRs: All Pull Requests must include a summary of changes and a UI screenshot.
+- Board Linking: Link all PRs to their respective GitHub Issue on the project board.
+- Main is Truth: All feature branches must merge into `main` after a peer review. 
