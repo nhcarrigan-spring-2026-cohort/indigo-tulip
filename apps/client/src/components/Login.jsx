@@ -35,13 +35,15 @@ console.log("loggin in")
 // If validation passes, send to backend 
 
 try {
- const response = await fetch("", {
+ const response = await fetch("http://localhost:3000/users/login", {
      method: "POST",
      headers: { "Content-Type": "application/json" }, 
      body: JSON.stringify(formData), }); 
      
      const data = await response.json(); 
-     
+     // Save user info for later 
+     localStorage.setItem("user", JSON.stringify(data));
+
      if (!response.ok) { 
         setError(data.error || "Login failed"); 
         return; 

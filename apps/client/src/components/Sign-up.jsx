@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './SignUp.css'
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function SignUp() {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,10 +55,14 @@ setError('')
     }
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name, 
+          email: formData.email, 
+          role: formData.role, 
+          password: formData.password}),
       });
 
       const data = await response.json();
@@ -67,7 +73,20 @@ setError('')
       }
 
       setSuccess("Account created successfully!");
-      setFormData({
+
+const loginRes = await fetch("http://localhost:3000/users/login", {
+   method: "POST",
+    headers: { "Content-Type": "application/json" },
+   body: JSON.stringify({ email: formData.email, password: formData.password }), });
+
+   const loginData = await loginRes.json();
+    if (!loginRes.ok) {
+       setError(loginData.error || "Login failed after signup."); return; }
+
+       localStorage.setItem("user", JSON.stringify(loginData));
+
+       navigate("/questions")
+       setFormData({
         name: "",
         email: "",
         role: "",

@@ -57,6 +57,7 @@ textarea, input[type="text"] {
   margin-top: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: black;
 }
 
 button {

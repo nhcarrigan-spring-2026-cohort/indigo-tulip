@@ -6,11 +6,13 @@ export default function AnswerCard ({ answer }){
 
   const handleAddComment = async () => {
     try{
-
-    const res = await fetch(``, {
+const currentUser = JSON.parse(localStorage.getItem("user"));
+    const res = await fetch(`http://localhost:3000/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: newComment })
+      body: JSON.stringify({  body: newComment, 
+       authorId: currentUser.id, 
+       answerId: answer.id })
     });
 
     if(!res.ok){
@@ -28,8 +30,13 @@ export default function AnswerCard ({ answer }){
 
   return (
     <div className="answer-card">
-      <p>{answer.text}</p>
-      {comments.map(c => <p key={c.id}>💬 {c.text}</p>)}
+      <p>Answer from: {answer.author.name}</p>
+      <p>{answer.body}</p>
+      {comments.map(c =>
+      <>
+         <p key={c.id}>{c.author.name}~ 🗨️
+ {c.body}</p>
+         </>)}
       <input
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}

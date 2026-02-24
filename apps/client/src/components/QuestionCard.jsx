@@ -7,11 +7,12 @@ export default function QuestionCard({ question }){
 
   const handleAddAnswer = async () => {
     try{
-
-    const res = await fetch(``, {
+const currentUser = JSON.parse(localStorage.getItem("user"));
+    const res = await fetch(`http://localhost:3000/answers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: newAnswer })
+      body: JSON.stringify({ body: newAnswer,
+         authorId: currentUser.id, questionId: question.id })
     });
 
     if (!res.ok) {
@@ -30,6 +31,7 @@ export default function QuestionCard({ question }){
 
   return (
     <div className="question-card">
+      <p>Asked by: {question.author.name}</p>
       <h2>{question.title}</h2>
       <p>{question.body}</p>
 

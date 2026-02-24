@@ -17,13 +17,13 @@ const AskQuestion = () => {
     // API call
 
     try{
-
-        const response=await fetch('',{
+const currentUser = JSON.parse(localStorage.getItem("user"));
+        const response=await fetch('http://localhost:3000/questions',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({title,subject,body})
+            body:JSON.stringify({title, subject, body, authorId: currentUser.id})
         });
 
         if(!response.ok){

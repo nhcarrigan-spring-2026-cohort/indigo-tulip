@@ -1,18 +1,19 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import QuestionCard from '../components/QuestionCard'
 import './QuestionPage.css'
 import AskQuestion from "../components/QuestionForm";
 
 export default function QForum(){
   const [showForm,setShowForm]=useState(false)
-/*
+
     const [questions,setQuestions]=useState([]);
 
-    useEffect(() => { fetch("")
+    useEffect(() => { fetch("http://localhost:3000/questions")
      .then(res => res.json()) 
      .then(data => setQuestions(data));
      }, []);
-*/
+
+/*
 const mockQuestions = [
   { 
     id: 1, 
@@ -80,7 +81,7 @@ text:'Maybe the backend will fix that hopefully'
     body: 'Why are indexes important in SQL databases and how do they improve query performance?' 
   }
 ];
-
+*/
      return (
         <>
         <div>
@@ -89,7 +90,7 @@ text:'Maybe the backend will fix that hopefully'
       </button>
       {showForm && <AskQuestion/>}
       <h1>Q&A Forum</h1>
-      {mockQuestions.map(q => (
+      {questions.map(q => (
         <QuestionCard key={q.id} question={q} />
       ))}
     </div>
