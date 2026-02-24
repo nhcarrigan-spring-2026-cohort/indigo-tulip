@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 4.8rem;
-  background-color: #6e6e6e;
+  background-color: var(--indigo-dark);
   width: 100%;
 }
 
@@ -28,5 +28,5 @@
 }
 
 .navbar-links a:hover {
-  color: #242424;
+  color: var(--tulip-orange);
 }
