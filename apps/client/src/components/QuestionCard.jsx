@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import AnswerCard from './AnswerCard'
+import AnswerCard from "./AnswerCard";
 
 export default function QuestionCard({ question }){
   const [answers, setAnswers] = useState(question.answers || []);
@@ -7,21 +7,27 @@ export default function QuestionCard({ question }){
 
   const handleAddAnswer = async () => {
     try{
+const currentUser = JSON.parse(localStorage.getItem("user"));
 
-    const res = await fetch(``, {
+if(!currentUser){alert("You must be logged in to answer questions"); return}
+
+    const res = await fetch(`http://localhost:3000/answers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: newAnswer })
+      body: JSON.stringify({ body: newAnswer,
+         authorId: currentUser.id, questionId: question.id })
     });
 
-     if(!res.ok){
-      throw new Error('Failed to add answer')
-    }
+    if (!res.ok) {
+       throw new Error("Failed to add answer");
+       }
+
     const saved = await res.json();
+    saved.author={ id: currentUser.id, name: currentUser.name };
     setAnswers([...answers, saved]);
     setNewAnswer("");
 
-  }catch(err){
+  } catch(err){
     console.error("Error adding answer:", err);
      alert("Something went wrong while adding your answer. Please try again.");
   }
@@ -29,6 +35,7 @@ export default function QuestionCard({ question }){
 
   return (
     <div className="question-card">
+      <p><strong>Asked by:</strong> <i>{question.author?.name || "Anonymous"}</i></p>
       <h2>{question.title}</h2>
       <p>{question.body}</p>
 

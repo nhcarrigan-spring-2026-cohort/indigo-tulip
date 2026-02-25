@@ -43,6 +43,7 @@ body{
   border-radius: 6px;
   font-size: 14px;
   transition: border-color 0.3s ease;
+  color: black;
 }
 
 #login-container input:focus {

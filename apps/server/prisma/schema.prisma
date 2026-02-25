@@ -15,7 +15,8 @@ model User {
   password  String
   createdAt DateTime @default(now())
   questions Question[] 
-  answers   Answer[]  
+  answers   Answer[] 
+  comments  Comment[] 
 }
 
 model Question {
@@ -37,4 +38,15 @@ model Answer {
   questionId String
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String
+  comments   Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  body      String
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  answer    Answer   @relation(fields: [answerId], references: [id])
+  answerId  String
 }
