@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './questionForm.css'
 
-const AskQuestion = () => {
+const AskQuestion = ({onQuestionPosted}) => {
   const [title, setTitle] = useState('');
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
@@ -18,6 +18,12 @@ const AskQuestion = () => {
 
     try{
 const currentUser = JSON.parse(localStorage.getItem("user"));
+
+ if (!currentUser) {
+  setError("You must be logged in to ask a question.");
+  return;
+}
+
         const response=await fetch('http://localhost:3000/questions',{
             method:'POST',
             headers:{
@@ -25,6 +31,7 @@ const currentUser = JSON.parse(localStorage.getItem("user"));
             },
             body:JSON.stringify({title, subject, body, authorId: currentUser.id})
         });
+
 
         if(!response.ok){
             throw new Error('Failed to submit question')
@@ -37,6 +44,7 @@ console.log({ title, subject, body });
     setTitle('');
     setSubject('');
     setBody('');
+onQuestionPosted(data);
 
     } catch (err){
         setError(err.message)

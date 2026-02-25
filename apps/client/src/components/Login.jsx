@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import './login.css'
+import './login.css';
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm(){
 
   const [formData, setFormData] = useState({email:"",password:""});
   const [error, setError]=useState('');
+const navigate=useNavigate()
 
   const handleChange = (e) => { 
     setFormData({ ...formData, [e.target.name]: e.target.value }); };
@@ -42,15 +44,17 @@ try {
      
      const data = await response.json(); 
      // Save user info for later 
-     localStorage.setItem("user", JSON.stringify(data));
 
      if (!response.ok) { 
         setError(data.error || "Login failed"); 
         return; 
     }
 
+    localStorage.setItem("user", JSON.stringify(data));
+
     alert("Login successful!"); 
     console.log("User logged in:", data);
+    navigate("/questions")
 
     setFormData({email:"",password:""})
 

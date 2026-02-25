@@ -15,6 +15,36 @@ export const getQuestions = async (req: Request, res: Response) => {
   }
 };
 
+
+export const getQuestionById = async (req: Request, res: Response) => {
+  try {
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+
+    const question = await prisma.question.findUnique({
+      where: { id },
+      include: {
+        author: { select: { name: true } },
+        answers: {
+          include: {
+            author: { select: { name: true } },
+            comments: { include: { author: { select: { name: true } } } }
+          }
+        }
+      }
+    });
+
+    if (!question) {
+      return res.status(404).json({ error: "Question not found" });
+    }
+
+    res.json(question);
+  } catch (err) {
+    console.error("Error fetching question:", err);
+    res.status(500).json({ error: "Failed to fetch question" });
+  }
+};
+
+
 export const createQuestion = async (req: Request, res: Response) => {
   try {
     const { title, subject, body, authorId } = req.body;
@@ -43,6 +73,11 @@ export const updateQuestion = async (req: Request, res: Response) => {
 export const deleteQuestion = async (req: Request, res: Response) => {
   try {
     const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    // Delete comments for all answers of this question
+     await prisma.comment.deleteMany({ where: { answer: { questionId: id } } }); 
+     // Delete answers for this question 
+     await prisma.answer.deleteMany({ where: { questionId: id } });
+    //  // Finally delete the question 
     await prisma.question.delete({ where: { id } });
     res.json({ message: "Question deleted" });
   } catch (err) {

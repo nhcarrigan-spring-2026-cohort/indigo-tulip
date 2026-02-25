@@ -7,6 +7,9 @@ export default function AnswerCard ({ answer }){
   const handleAddComment = async () => {
     try{
 const currentUser = JSON.parse(localStorage.getItem("user"));
+
+if (!currentUser.id) { alert("You must be logged in to comment."); return; }
+
     const res = await fetch(`http://localhost:3000/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -20,6 +23,7 @@ const currentUser = JSON.parse(localStorage.getItem("user"));
     }
 
     const saved = await res.json();
+    saved.author=currentUser
     setComments([...comments, saved]);
     setNewComment("");
 }catch (err){
@@ -30,13 +34,12 @@ const currentUser = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="answer-card">
-      <p>Answer from: {answer.author.name}</p>
+      <p><strong>Answer from:</strong> <i>{answer.author.name}</i></p>
       <p>{answer.body}</p>
       {comments.map(c =>
-      <>
-         <p key={c.id}>{c.author.name}~ 🗨️
+         <p key={c.id}><strong><i>{c.author.name}</i>~</strong> 🗨️
  {c.body}</p>
-         </>)}
+         )}
       <input
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}

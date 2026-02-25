@@ -73,3 +73,8 @@ button {
 button:hover {
   background-color: whitesmoke;
 }
+.highlight {
+  background-color: grey; /* light yellow */
+  transition: background-color 2s ease;
+}
+
